@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PhoneBook</title>
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-resource/angular-resource.js"></script>
+  <script src="js/lb.services.js"></script>
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="main" ng-app="phoneBookRecords" ng-controller="phoneBookRecordsController">
+    <h1>Phone Book</h1>
+
+
+    <div class="addItem input-group" style="margin-bottom: 10px;">
+      <input class=" form-control" ng-model="newRecordName" placeholder="Name" class="addText">
+      <input class=" form-control" ng-model="newRecordPhoneNumper" placeholder="Phone Number" class="addText">
+      <button class="btn btn-success" ng-click="pushRecord()">+</button>
+    </div>
+    <p id='nameLengthError' style="color: crimson; display: none;">sorry, name length must be > 3.</p>
+    <p id='phoneNumberError' style="color: crimson; display: none;">sorry, phone number is required.</p>
+    <div class="input-group" style="margin-bottom: 10px;">
+      <input type="text" class="form-control " placeholder="" ng-model="srachName" aria-label="" aria-describedby="basic-addon1">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button" ng-click="searchRecordByName()">Search</button>
+      </div>
+    </div>
+
+    <table class="table " style="border: 1;margin-bottom: 10px;">
+      <thead>
+        <tr>
+          <th style="width: 35%;">
+            Name
+          </th>
+          <th style="width: 35%;">
+            Phone Number
+          </th>
+          <th style="width: 23%;">
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="rec in records">
+          <td>{{rec.name}}</td>
+          <td>{{rec.phoneNumber}}</td>
+          <td> <button class="btn btn-danger" ng-click="deleteRecord($index)">x</button>
+            <button class="btn btn-warning" ng-click="updateRecord($index)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

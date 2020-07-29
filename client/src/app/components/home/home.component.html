@@ -1,0 +1,40 @@
+
+<body>
+  <div class="main" ng-app="phoneBookRecords" ng-controller="phoneBookRecordsController">
+    <h1>Phone Book</h1>
+    <div class="col">
+      <button type="button" data-toggle="modal" data-target="#modalRecord" class="btn btn-primary float-right mb-3" (click)="freeForm()">New Record</button>
+      <table class="table table-hover" style="border: 1;margin-bottom: 10px;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">
+              Name
+            </th>
+            <th scope="col">
+              Phone Number
+            </th>
+            <th scope="col">
+              &nbsp;
+            </th>
+            <th scope="col">
+              &nbsp;
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of records; index as i">
+            <td scope="row">{{i+1}}</td>
+            <td>{{record.name}}</td>
+            <td>{{record.phoneNumber}}</td>
+            <td> <button class="btn btn-primary" (click)="onPreUpdateRecord(record)"
+              data-toggle="modal" data-target="#modalRecord">Update</button></td>
+            <td> <a href="/" class="btn btn-danger" (click)="onDeleteRecord(record.id)">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <script src="js/app.js"></script> -->
+</body>
+<app-modal></app-modal>

@@ -1,0 +1,23 @@
+li span {
+  cursor: pointer;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  }
+  .addRecord {
+    position: relative;
+    padding-bottom: 0px;
+    height: 30px;
+  }
+  .addText {
+    width: 80%;
+    height: 30px;
+  }
+  .addItem button {
+    height: 35px;
+    width: 50px;
+  }
+  .main {
+    max-width: 500px;
+    margin: auto;
+  }

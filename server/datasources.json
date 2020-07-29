@@ -1,0 +1,14 @@
+{
+  "db": {
+    "host": "192.168.1.6",
+    "port": 1433,
+    "database": "PhoneBook",
+    "username": "sa",
+    "password": "Cisco.123",
+    "name": "db",
+    "connector": "mssql",
+    "options": {
+      "encrypt": false
+    }
+  }
+}
