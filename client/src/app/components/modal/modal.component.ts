@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-modal',
@@ -12,7 +13,7 @@ import { Location } from '@angular/common';
 export class ModalComponent implements OnInit {
 
   constructor(
-    private dataApiService: DataApiService,
+    public dataApiService: DataApiService,
     private location: Location
   ) { }
   ngOnInit() {
@@ -24,7 +25,13 @@ export class ModalComponent implements OnInit {
 
       if (recordForm.value.id == null) {
         // NEW
-        this.dataApiService.saveRecord(recordForm.value).subscribe(record => location.reload());
+        this.dataApiService.saveRecord(recordForm.value).subscribe(record => location.reload(), error => {
+          if (error.status === 500) {
+            alert('Sorry .. phonenumber must be unique');
+          } else {
+            alert(error.message);
+          }
+        });
       } else {
         // update
         if (recordForm.value.name === '') {

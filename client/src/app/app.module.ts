@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
-// import { HttpClientModule } from '@angular/common/http/src/module';
+
 //Services
 import { DataApiService } from './services/data-api.service';
 import { ModalComponent } from './components/modal/modal.component';
@@ -22,7 +23,8 @@ import { ModalComponent } from './components/modal/modal.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [DataApiService],
   bootstrap: [AppComponent]

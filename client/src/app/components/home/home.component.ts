@@ -2,6 +2,7 @@ import { NgForm } from '@angular/forms';
 import { RecordInterface } from './../../models/records-interface';
 import { DataApiService } from './../../services/data-api.service';
 import { Component, OnInit } from '@angular/core';
+// import * as abc from '../../../js/app.js';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  userName: string;
   constructor(private dataApiService: DataApiService) { }
   records: RecordInterface;
+  aa: boolean = false;
   public app_name = "Phone Book";
-
   ngOnInit(): void {
     this.getListRecords();
   }
@@ -28,6 +30,17 @@ export class HomeComponent implements OnInit {
   onPreUpdateRecord(record: RecordInterface): void {
     this.dataApiService.selectdRecord = Object.assign({}, record);
   }
+  searchRecord() {
+    if (this.userName.length > 0) {
+      // alert(this.userName);
+      // abc.searchRecordByName(this.userName).subscribe(records => (this.records = records));
+      this.dataApiService.getRecordByName(this.userName).subscribe(records => (this.records = records));
+    } else {
+      this.getListRecords();
+    }
+  }
+
+
   freeForm(recordForm?: NgForm): void {
     this.dataApiService.selectdRecord = {
       id: null,
